@@ -1,0 +1,59 @@
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="datetime-local"],
+textarea {
+  background-color: var(--input-base);
+  border: 1px solid var(--input-stroke);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font: var(--text-body-md);
+  color: var(--color-heading);
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--brand-light);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--input-placeholder);
+}
+
+textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input:invalid,
+textarea:invalid {
+  border-color: var(--feedback-danger);
+}
+
+.input-error {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font: var(--text-body-sm);
+  color: var(--feedback-danger);
+}
+
+.input-error img {
+  width: 1rem;
+  height: 1rem;
+}
+
+input:invalid~.input-error,
+textarea:invalid~.input-error {
+  display: flex;
+}

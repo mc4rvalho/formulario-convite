@@ -1,3 +1,5 @@
+@import url(./fields/index.css);
+
 fieldset {
   border: none;
   margin-bottom: 3rem;
@@ -8,15 +10,16 @@ legend {
   color: var(--color-heading);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   margin-bottom: 1.5rem;
   width: 100%;
   padding-bottom: 0.75rem;
+  line-height: 1;
 }
 
-legend i {
-  color: var(--brand-light);
-  font-size: 1.5rem;
+legend img {
+  width: 20px;
+  height: 20px;
 }
 
 .input-wrapper {
