@@ -87,6 +87,156 @@
             </div>
           </div>
         </fieldset>
+
+        <fieldset>
+          <legend>
+            <img src="./assets/icons/paintbrush-vertical.svg" alt="Ícone de um pincel de pintar">
+            Personalização
+          </legend>
+
+          <div class="input-wrapper">
+            <label>Cor principal</label>
+            <div class="color-picker">
+              <input type="radio" name="color" id="blue" style="--color:var(--brand-light)" checked>
+              <input type="radio" name="color" id="navy" style="--color:var(--accent-colors-navy)">
+              <input type="radio" name="color" id="purple" style="--color:var(--accent-colors-purple)">
+              <input type="radio" name="color" id="fuschia" style="--color:var(--accent-colors-fuschia)">
+              <input type="radio" name="color" id="pink" style="--color:var(--accent-colors-pink)">
+              <input type="radio" name="color" id="orange" style="--color:var(--accent-colors-orange)">
+              <input type="radio" name="color" id="yellow" style="--color:var(--accent-colors-yellow)">
+              <input type="radio" name="color" id="lime" style="--color:var(--accent-colors-lime)">
+              <input type="radio" name="color" id="green" style="--color:var(--accent-colors-green)">
+              <input type="radio" name="color" id="cyan" style="--color:var(--accent-colors-cyan)">
+            </div>
+          </div>
+
+          <div class="input-wrapper">
+            <label>Tema do evento</label>
+            <div class="theme-grid">
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-birthday" checked>
+                <label for="theme-birthday">
+                  <img src="./assets/themes/birthday.png" alt="Aniversário">
+                  <span>Aniversário</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-kids">
+                <label for="theme-kids">
+                  <img src="./assets/themes/children.png" alt="Infantil">
+                  <span>Infantil</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-graduation">
+                <label for="theme-graduation">
+                  <img src="./assets/themes/graduation.png" alt="Formatura">
+                  <span>Formatura</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-marriage">
+                <label for="theme-marriage">
+                  <img src="./assets/themes/marriage.png" alt="Casamento">
+                  <span>Casamento</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-baby">
+                <label for="theme-baby">
+                  <img src="./assets/themes/baby-shower.png" alt="Chá de bebê">
+                  <span>Chá de bebê</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-bridal">
+                <label for="theme-bridal">
+                  <img src="./assets/themes/bridal-shower.png" alt="Chá de panela">
+                  <span>Chá de panela</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-carnival">
+                <label for="theme-carnival">
+                  <img src="./assets/themes/carnival.png" alt="Carnaval">
+                  <span>Carnaval</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-easter">
+                <label for="theme-easter">
+                  <img src="./assets/themes/easter.png" alt="Páscoa">
+                  <span>Páscoa</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-saojoao">
+                <label for="theme-saojoao">
+                  <img src="./assets/themes/sao-joao.png" alt="São João">
+                  <span>São João</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-halloween">
+                <label for="theme-halloween">
+                  <img src="./assets/themes/halloween.png" alt="Halloween">
+                  <span>Halloween</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-christmas">
+                <label for="theme-christmas">
+                  <img src="./assets/themes/christmas.png" alt="Natal">
+                  <span>Natal</span>
+                </label>
+              </div>
+
+              <div class="theme-item">
+                <input type="radio" name="theme" id="theme-other">
+                <label for="theme-other">
+                  <img src="./assets/themes/other.png" alt="Outro">
+                  <span>Outro</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-2 switch-wrapper">
+            <div class="input-wrapper toggle-wrapper">
+              <label>Estilo</label>
+              <div class="toggle-switch">
+                <input type="checkbox" id="theme-toggle">
+                <label for="theme-toggle"></label>
+                <span>Escuro</span>
+              </div>
+            </div>
+
+            <div class="input-wrapper droparea-wrapper">
+              <label for="cover-photo">Foto de capa</label>
+
+              <div class="droparea">
+                <input type="file" id="cover-photo" required>
+              </div>
+
+              <div class="input-error">
+                <img src="./assets/icons/circle-alert.svg" alt="Ícone de erro">
+                Selecione uma imagem
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+
       </form>
     </main>
   </div>

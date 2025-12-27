@@ -1,0 +1,64 @@
+.color-picker {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.color-picker input[type="radio"] {
+  appearance: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color);
+  border: 2px solid var(--shape-body);
+  outline: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.color-picker input[type="radio"]:checked {
+  outline-color: var(--brand-light);
+}
+
+.color-picker input[type="radio"]:hover {
+  transform: scale(1.1);
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.theme-item input[type="radio"] {
+  display: none;
+}
+
+.theme-item label {
+  display: flex;
+  flex-direction: column;
+  background: var(--shape-button);
+  border-radius: 8px;
+  border: 2px solid var(--shape-button);
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.theme-item label img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+
+.theme-item label span {
+  padding: 0.5rem;
+  font: var(--text-body-sm-bold);
+  color: var(--color-body);
+  text-align: center;
+}
+
+.theme-item input[type="radio"]:checked + label {
+  border-color: var(--brand-light);
+}
