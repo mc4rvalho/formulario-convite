@@ -24,6 +24,64 @@
         </header>
       </div>
     </aside>
+
+    <main>
+      <header>
+        <h2>Crie seu convite</h2>
+      </header>
+
+      <form action="#">
+        <fieldset>
+          <legend>
+            <i class="ph ph-calendar-blank"></i>
+            Sobre o evento
+          </legend>
+
+          <div class="input-wrapper">
+            <label for="event-title">Título</label>
+            <input type="text" id="event-title" placeholder="Nome do evento">
+          </div>
+
+          <div class="col-2">
+            <div class="input-wrapper">
+              <label for="event-start">Início</label>
+              <input type="datetime-local" id="event-start">
+            </div>
+            <div class="input-wrapper">
+              <label for="event-end">Fim</label>
+              <input type="datetime-local" id="event-end">
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div class="input-wrapper">
+              <label>Tipo</label>
+              <div class="radio-group-type">
+                <input type="radio" name="type" id="presencial" checked>
+                <label for="presencial">
+                  <i class="ph ph-building-office"></i> Presencial
+                </label>
+
+                <input type="radio" name="type" id="online">
+                <label for="online">
+                  <i class="ph ph-video-camera"></i> Online
+                </label>
+              </div>
+            </div>
+
+            <div class="input-wrapper">
+              <label for="location">Local</label>
+              <input type="text" id="location" placeholder="Link ou endereço">
+            </div>
+          </div>
+
+          <div class="input-wrapper">
+            <label for="description">Descrição</label>
+            <textarea id="description" placeholder="Escreva sobre os detalhes do evento"></textarea>
+          </div>
+        </fieldset>
+      </form>
+    </main>
   </div>
 </body>
 

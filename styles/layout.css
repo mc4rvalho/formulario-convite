@@ -1,7 +1,8 @@
 #app {
   display: grid;
-  grid-template-columns: 400px 1fr;
+  grid-template-columns: 480px 1fr;
   height: 100vh;
+  /* overflow: hidden; */
 
   & aside {
     margin: 20px;
@@ -20,15 +21,15 @@
       & header {
 
         img {
-          margin-bottom: 16px;
           width: 45.85px;
           height: 48px;
+          margin-bottom: 16px;
         }
 
         h1 {
           font: var(--text-logo);
           color: var(--accent-colors-pink);
-          margin-bottom: 12px;
+          margin-bottom: 16px;
         }
 
         p {
@@ -36,6 +37,36 @@
           color: var(--color-heading);
         }
       }
+    }
+  }
+
+  & main {
+    background-color: var(--shape-body);
+    padding: 40px 64px;
+    overflow-y: auto;
+  }
+
+  main header h2 {
+    font: var(--text-heading-md);
+    color: var(--color-heading);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    #app {
+      grid-template-columns: 1fr;
+      height: auto;
+      overflow: auto;
+    }
+
+    aside {
+      padding: 2rem;
+      display: none;
+    }
+
+    main {
+      border-radius: 0;
+      padding: 2rem;
     }
   }
 }

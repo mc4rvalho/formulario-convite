@@ -1,0 +1,32 @@
+fieldset {
+  border: none;
+  margin-bottom: 3rem;
+}
+
+legend {
+  font: var(--text-heading-sm);
+  color: var(--color-heading);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  padding-bottom: 0.75rem;
+}
+
+legend i {
+  color: var(--brand-light);
+  font-size: 1.5rem;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-wrapper label {
+  font: var(--text-body-sm-bold);
+  color: var(--color-body);
+}
