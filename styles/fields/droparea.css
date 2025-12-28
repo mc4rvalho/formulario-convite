@@ -3,9 +3,9 @@
   align-items: center;
   width: 100%;
   gap: 1rem;
-}
 
-.droparea span {
-  font: var(--text-body-sm-bold);
-  color: var(--input-placeholder);
+  & span {
+    font: var(--text-body-sm-bold);
+    color: var(--input-placeholder);
+  }
 }

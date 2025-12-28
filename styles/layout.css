@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 480px 1fr;
   height: 100vh;
-  /* overflow: hidden; */
 
   & aside {
     margin: 20px;
@@ -19,7 +18,6 @@
       flex-direction: column;
 
       & header {
-
         img {
           width: 45.85px;
           height: 48px;
@@ -34,7 +32,7 @@
 
         p {
           font: var(--text-body-md);
-          color: var(--color-heading);
+          color: #F9F9F9;
         }
       }
     }
@@ -44,27 +42,25 @@
     background-color: var(--shape-body);
     padding: 40px 64px;
     overflow-y: auto;
-  }
 
-  main header h2 {
-    font: var(--text-heading-md);
-    color: var(--color-heading);
-    margin-bottom: 2rem;
+    header h2 {
+      font: var(--text-heading-md);
+      color: var(--color-heading);
+      margin-bottom: 2rem;
+    }
   }
 
   @media (max-width: 1024px) {
-    #app {
-      grid-template-columns: 1fr;
-      height: auto;
-      overflow: auto;
-    }
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: auto;
 
-    aside {
+    & aside {
       padding: 2rem;
       display: none;
     }
 
-    main {
+    & main {
       border-radius: 0;
       padding: 2rem;
     }

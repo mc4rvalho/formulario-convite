@@ -4,50 +4,58 @@
   gap: 0.75rem;
   margin-bottom: 0.75rem;
   position: relative;
-}
 
-.checkbox-wrapper input[type="checkbox"] {
-  appearance: none;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 1px solid var(--input-stroke);
-  border-radius: 4px;
-  background-color: var(--input-base);
-  cursor: pointer;
+  &:first-of-type {
+    border-top: 1px solid var(--input-stroke);
+    padding-top: 2.5rem;
+    margin-top: 2rem;
+    width: 100%;
+  }
 
-  display: grid;
-  place-content: center;
+  &:last-of-type {
+    padding-bottom: 3rem;
+  }
 
-  transition: all 0.2s;
-}
+  & input[type="checkbox"] {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--input-stroke);
+    border-radius: 4px;
+    background-color: var(--input-base);
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: all 0.2s;
 
-.checkbox-wrapper input[type="checkbox"]:checked {
-  border-color: var(--brand-mid);
+    &:checked {
+      border-color: var(--brand-mid);
+      background-image: url(../../assets/icons/check.svg);
+      background-size: 1rem;
+      background-repeat: no-repeat;
+      background-position: center;
 
-  background-image: url(../../assets/icons/check.svg);
-  background-size: 1rem;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+      &::before {
+        display: none;
+      }
+    }
+  }
 
-.checkbox-wrapper input[type="checkbox"]:checked::before {
-  display: none;
-}
+  & label {
+    font: var(--text-body-sm-bold);
+    color: var(--color-body);
+    line-height: 1.25rem;
+    cursor: pointer;
+  }
 
-.checkbox-wrapper label {
-  font: var(--text-body-sm-bold);
-  color: var(--color-body);
-  line-height: 1.25rem;
-  cursor: pointer;
-}
+  & a {
+    color: var(--brand-light);
+    text-decoration: none;
 
-.checkbox-wrapper a {
-  color: var(--brand-light);
-  text-decoration: none;
-}
-
-.checkbox-wrapper a:hover {
-  text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .toggle-switch {
@@ -55,69 +63,59 @@
   align-items: center;
   gap: 0.75rem;
   height: 3rem;
-}
 
-.toggle-switch input {
-  display: none;
-}
+  & input {
+    display: none;
 
-.toggle-switch label {
-  width: 3.5rem;
-  height: 2rem;
-  background-color: var(--shape-button);
-  border: 1px solid var(--input-stroke);
-  border-radius: 99px;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
+    &:checked {
+      & + label {
+        background-color: var(--brand-light);
 
-.toggle-switch label::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 4px;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: var(--input-placeholder);
-  border-radius: 50%;
-  transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-}
+        &::after {
+          left: calc(100% - 4px);
+          transform: translate(-100%, -50%);
+          background-color: var(--color-heading);
+        }
+      }
 
-.toggle-switch input:checked+label {
-  background-color: var(--brand-light);
-}
+      & ~ span::after {
+        content: "Claro";
+      }
+    }
+  }
 
-.toggle-switch input:checked+label::after {
-  left: calc(100% - 4px);
-  transform: translate(-100%, -50%);
+  & label {
+    width: 3.5rem;
+    height: 2rem;
+    background-color: var(--shape-button);
+    border: 1px solid var(--input-stroke);
+    border-radius: 99px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s;
 
-  background-color: var(--color-heading);
-}
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 4px;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: var(--input-placeholder);
+      border-radius: 50%;
+      transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+  }
 
-.toggle-switch span {
-  font: var(--text-body-md);
-  color: var(--color-body);
-}
+  & span {
+    font: var(--text-body-md);
+    color: var(--color-body);
 
-.toggle-switch span::after {
-  content: "Escuro";
-  font: var(--text-body-md);
-  color: var(--color-body);
-}
-
-.toggle-switch input:checked ~ span::after {
-  content: "Claro";
-}
-
-.checkbox-wrapper:first-of-type {
-  border-top: 1px solid var(--input-stroke);
-  padding-top: 2.5rem;
-  margin-top: 2rem;
-  width: 100%;
-}
-
-.checkbox-wrapper:last-of-type {
-  padding-bottom: 3rem;
+    &::after {
+      content: "Escuro";
+      font: var(--text-body-md);
+      color: var(--color-body);
+    }
+  }
 }
