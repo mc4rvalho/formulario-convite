@@ -55,3 +55,34 @@
 .radio-group-type #online:checked+label::before {
   background-image: url(../../assets/icons/video-hover.svg);
 }
+
+.btn-primary {
+  width: 177px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0;
+
+  border-radius: 8px;
+  border: none;
+  background-color: var(--brand-dark);
+  font: var(--text-body-md-bold);
+  color: var(--color-heading);
+  cursor: pointer;
+  transition: background 0.2s;
+
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-bottom: 80px;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-light);
+}
+
+.btn-primary img {
+  width: 1.5rem;
+  height: 1.5rem;
+}

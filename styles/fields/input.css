@@ -44,7 +44,7 @@ textarea:invalid {
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.5rem;
-  font: var(--text-body-sm);
+  font: var(--text-body-xs-bold);
   color: var(--feedback-danger);
 }
 

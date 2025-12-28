@@ -217,7 +217,7 @@
               <div class="toggle-switch">
                 <input type="checkbox" id="theme-toggle">
                 <label for="theme-toggle"></label>
-                <span>Escuro</span>
+                <span></span>
               </div>
             </div>
 
@@ -245,6 +245,11 @@
           <div class="input-wrapper">
             <label for="contact-name">Nome</label>
             <input type="text" id="contact-name" placeholder="Nome completo" required>
+
+            <div class="input-error">
+              <img src="./assets/icons/circle-alert.svg" alt="Ícone de erro">
+              Campo obrigatório
+            </div>
           </div>
 
           <div class="col-2">
@@ -259,7 +264,29 @@
           </div>
         </fieldset>
 
-        
+        <footer>
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="terms">
+            <label for="terms">Li e concordo com os <a href="#">Termos e Condições</a> e com a <a href="#">Política de
+                Privacidade</a></label>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="updates">
+            <label for="updates">Aceito receber atualizações e promoções por e-mail</label>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="sms">
+            <label for="sms">Aceito receber atualizações e promoções por SMS</label>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            <img src="./assets/icons/ticket.svg" alt="Ícone de convite">
+            Gerar convite
+          </button>
+
+        </footer>
       </form>
     </main>
   </div>
