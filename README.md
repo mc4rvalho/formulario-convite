@@ -3,7 +3,7 @@
 
 O **Festivite** é uma aplicação web interativa desenvolvida para criar e personalizar convites de eventos digitais. Este projeto combina estruturação semântica, estilização avançada e manipulação dinâmica de estilos via JavaScript.
 
-![Preview do Projeto](./assets/preview.png)
+![Preview do Projeto](assets/preview.png)
 
 ## 🚀 Tecnologias Utilizadas
 
