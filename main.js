@@ -1,10 +1,10 @@
 /**
  * main.js
- * Script responsável pela interatividade da página de convite.
- * Funcionalidades:
- * 1. Troca dinâmica da cor principal (Color Picker).
- * 2. Troca do background baseado no tema escolhido.
- * 3. Alternância entre Modo Claro (Light) e Escuro (Dark).
+ * Script de controle de interatividade para o formulário de convite.
+ * * Funcionalidades principais:
+ * 1. Gerenciamento de Cores: Captura a cor selecionada e aplica globalmente via variáveis CSS.
+ * 2. Gerenciamento de Tema Visual: Altera o background da página baseado na imagem do tema.
+ * 3. Controle de Modo Claro/Escuro: Alterna paletas de cores manipulando variáveis no :root.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,19 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
      1. GERENCIAMENTO DA COR PRINCIPAL (COLOR PICKER)
      ========================================================================== */
 
+  // Seleciona todos os inputs do tipo radio dentro do container de cores
   const colorInputs = document.querySelectorAll('.color-picker input[type="radio"]');
 
   colorInputs.forEach(input => {
     input.addEventListener('change', function () {
       if (this.checked) {
-        // CORREÇÃO AQUI:
-        // Usamos getComputedStyle para garantir que pegamos o valor correto da cor,
-        // não importa se foi definida inline ou via CSS externo.
+        // Utilizamos getComputedStyle(this) em vez de this.style.
+        // Isso garante que o valor da variável '--color' seja lido corretamente,
+        // independentemente se foi definido via atributo 'style' inline ou em arquivo CSS externo.
         const computedStyle = getComputedStyle(this);
+        
+        // .trim() remove espaços em branco acidentais que poderiam invalidar a cor no CSS
         const newColor = computedStyle.getPropertyValue('--color').trim();
 
-        // Só aplica se realmente encontrou uma cor
+        // Validação de segurança: só aplica se uma cor válida for encontrada
         if (newColor) {
+          // Aplica a nova cor na variável global --brand-light do elemento <html> (:root).
+          // Isso reflete a mudança instantaneamente em todos os elementos que usam essa variável.
           document.documentElement.style.setProperty('--brand-light', newColor);
         }
       }
@@ -38,31 +43,32 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
 
   const themeInputs = document.querySelectorAll('.theme-item input[type="radio"]');
-  const body = document.body; // Elemento alvo para aplicar o background
+  const body = document.body; // Referência ao elemento <body> para aplicação do fundo
 
   themeInputs.forEach(input => {
     input.addEventListener('change', function () {
       if (this.checked) {
-        // Navegação no DOM: O input está antes do label.
-        // Acessamos o próximo irmão (label) e buscamos a tag <img> dentro dele.
+        // Navegação DOM: O input radio está posicionado antes do label no HTML.
+        // Acessamos o próximo elemento irmão (label) para encontrar a tag <img> interna.
         const label = this.nextElementSibling;
         const img = label.querySelector('img');
 
         if (img) {
           const imgSrc = img.src;
 
-          // Define a imagem selecionada como background do body.
-          // Adiciona um gradiente linear preto com 85% de opacidade (overlay)
-          // para garantir a legibilidade do texto branco sobre a imagem.
+          // Construção do Background:
+          // 1. linear-gradient: Cria uma camada escura (overlay) com 85% de opacidade
+          //    para garantir contraste suficiente para leitura dos textos brancos.
+          // 2. url(): Define a imagem do tema selecionado.
           body.style.backgroundImage = `
             linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
             url(${imgSrc})
           `;
 
-          // Ajustes de CSS para garantir que a imagem cubra a tela e não repita
-          body.style.backgroundSize = 'cover';       // Preenche todo o espaço
-          body.style.backgroundAttachment = 'fixed'; // Imagem fixa ao rolar a página
-          body.style.backgroundPosition = 'center';  // Centraliza o foco da imagem
+          // Propriedades para garantir visualização correta em qualquer tamanho de tela
+          body.style.backgroundSize = 'cover';       // Preenche todo o viewport
+          body.style.backgroundAttachment = 'fixed'; // Efeito parallax (imagem fixa ao rolar)
+          body.style.backgroundPosition = 'center';  // Centraliza o ponto focal da imagem
           body.style.backgroundRepeat = 'no-repeat';
         }
       }
@@ -77,40 +83,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
 
   /**
-   * Função: setLightMode
-   * Descrição: Sobrescreve as variáveis CSS originais com valores claros.
-   * Utiliza 'style.setProperty' para injetar estilos inline na tag <html>.
+   * Ativa o Modo Claro (Light Mode).
+   * Estratégia: Injeta valores de cores claras nas variáveis CSS globais via estilo inline.
+   * Isso sobrescreve os valores padrões definidos no arquivo CSS.
    */
   function setLightMode() {
     const root = document.documentElement.style;
 
-    // Definição da Paleta Clara (Light Mode)
-    // Fundo da página (off-white / gelo)
-    root.setProperty('--shape-body', '#F8FAFC');
-    // Fundo de cards e botões secundários (cinza muito claro)
-    root.setProperty('--shape-button', '#E2E8F0');
-    // Cor de estado hover (cinza claro)
-    root.setProperty('--shape-hover', '#CBD5E1');
+    // Paleta de Cores Claras
+    root.setProperty('--shape-body', '#F8FAFC');       // Fundo da página (Cinza Gelo)
+    root.setProperty('--shape-button', '#E2E8F0');     // Elementos de UI (Cinza Claro)
+    root.setProperty('--shape-hover', '#CBD5E1');      // Estado de hover
 
-    // Inputs
-    root.setProperty('--input-base', '#FFFFFF');       // Fundo branco puro
-    root.setProperty('--input-stroke', '#94A3B8');     // Borda cinza médio
+    // Inputs e Formulários
+    root.setProperty('--input-base', '#FFFFFF');       // Fundo branco
+    root.setProperty('--input-stroke', '#94A3B8');     // Bordas mais visíveis
     root.setProperty('--input-placeholder', '#64748B');// Texto de ajuda
 
     // Tipografia
-    root.setProperty('--color-heading', '#0F172A');    // Títulos (quase preto)
-    root.setProperty('--color-body', '#334155');       // Texto corrido (cinza escuro)
+    root.setProperty('--color-heading', '#0F172A');    // Títulos (Preto Azulado)
+    root.setProperty('--color-body', '#334155');       // Texto (Cinza Escuro)
   }
 
   /**
-   * Função: setDarkMode
-   * Descrição: Restaura o tema padrão (Escuro) removendo os estilos inline.
-   * Ao remover a propriedade, o navegador volta a ler o valor original do arquivo .css.
+   * Restaura o Modo Escuro (Dark Mode - Padrão).
+   * Estratégia: Remove as propriedades inline injetadas no elemento <html>.
+   * Ao remover, o navegador volta a ler os valores originais do arquivo index.css (Dark Mode).
    */
   function setDarkMode() {
     const root = document.documentElement.style;
 
-    // Lista de variáveis que precisam ser resetadas
+    // Lista de variáveis manipuladas que precisam ser resetadas
     const properties = [
       '--shape-body',
       '--shape-button',
@@ -122,14 +125,15 @@ document.addEventListener('DOMContentLoaded', () => {
       '--color-body'
     ];
 
-    // Loop para remover cada propriedade injetada anteriormente
+    // Limpeza das propriedades inline
     properties.forEach(prop => root.removeProperty(prop));
   }
 
-  // Listener para o Toggle Switch
+  // Listener de evento para o Switch
   if (themeToggle) {
     themeToggle.addEventListener('change', function () {
-      // Se checked = true, ativa modo claro. Caso contrário, reseta para escuro.
+      // Se checked (ativo) = Modo Claro
+      // Se unchecked (inativo) = Modo Escuro
       if (this.checked) {
         setLightMode();
       } else {

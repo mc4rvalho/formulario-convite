@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.573rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   font: var(--text-body-sm-bold);
@@ -25,8 +25,8 @@
 }
 
 .radio-group-type label img {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   object-fit: contain;
 }
 
@@ -41,8 +41,8 @@
 
 .radio-group-type input:checked+label::before {
   content: "";
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
