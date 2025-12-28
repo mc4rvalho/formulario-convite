@@ -1,9 +1,11 @@
 ```markdown
 # 🎉 Festivite - Criador de Convites Digitais
 
-O **Festivite** é uma aplicação web interativa desenvolvida para criar e personalizar convites de eventos digitais. Este projeto combina estruturação semântica, estilização avançada e manipulação dinâmica de estilos via JavaScript.
+**Festivite** é uma aplicação web interativa desenvolvida para criar e personalizar convites de eventos digitais. Este projeto combina estruturação semântica, estilização avançada e manipulação dinâmica de estilos via JavaScript.
 
-<img src="https://github.com/mc4rvalho/formulario-convite/blob/main/assets/preview.png?raw=true" alt="Preview do Projeto" width="100%">
+<img width="1366" height="585" alt="preview-projeto" src="https://github.com/user-attachments/assets/c753fe5d-2d37-449f-8647-ff3c737a574c" />
+
+
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -30,7 +32,7 @@ Este projeto foi desenvolvido sem o uso de frameworks, focando nos fundamentos d
 
 1. Clone este repositório:
    ```bash
-   git clone [https://github.com/SEU-USUARIO/festivite.git](https://github.com/SEU-USUARIO/festivite.git)
+   git clone [https://github.com/mc4rvalho/festivite.git](https://github.com/mc4rvalho/festivite.git)
 
 ```
 
