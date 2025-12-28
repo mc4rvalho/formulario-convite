@@ -8,24 +8,26 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   /* ==========================================================================
      1. GERENCIAMENTO DA COR PRINCIPAL (COLOR PICKER)
      ========================================================================== */
-  
-  // Seleciona todos os radio buttons dentro do container .color-picker
+
   const colorInputs = document.querySelectorAll('.color-picker input[type="radio"]');
 
   colorInputs.forEach(input => {
-    input.addEventListener('change', function() {
-      // Verifica se o input foi selecionado
+    input.addEventListener('change', function () {
       if (this.checked) {
-        // Recupera o valor da cor armazenado na variável CSS inline (--color) do elemento HTML
-        const newColor = this.style.getPropertyValue('--color');
-        
-        // Aplica a nova cor na variável global :root (--brand-light).
-        // Isso atualiza instantaneamente bordas, focos e detalhes em toda a página.
-        document.documentElement.style.setProperty('--brand-light', newColor);
+        // CORREÇÃO AQUI:
+        // Usamos getComputedStyle para garantir que pegamos o valor correto da cor,
+        // não importa se foi definida inline ou via CSS externo.
+        const computedStyle = getComputedStyle(this);
+        const newColor = computedStyle.getPropertyValue('--color').trim();
+
+        // Só aplica se realmente encontrou uma cor
+        if (newColor) {
+          document.documentElement.style.setProperty('--brand-light', newColor);
+        }
       }
     });
   });
@@ -34,21 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      2. GERENCIAMENTO DO TEMA (BACKGROUND IMAGE)
      ========================================================================== */
-  
+
   const themeInputs = document.querySelectorAll('.theme-item input[type="radio"]');
   const body = document.body; // Elemento alvo para aplicar o background
 
   themeInputs.forEach(input => {
-    input.addEventListener('change', function() {
+    input.addEventListener('change', function () {
       if (this.checked) {
         // Navegação no DOM: O input está antes do label.
         // Acessamos o próximo irmão (label) e buscamos a tag <img> dentro dele.
         const label = this.nextElementSibling;
         const img = label.querySelector('img');
-        
+
         if (img) {
           const imgSrc = img.src;
-          
+
           // Define a imagem selecionada como background do body.
           // Adiciona um gradiente linear preto com 85% de opacidade (overlay)
           // para garantir a legibilidade do texto branco sobre a imagem.
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
             url(${imgSrc})
           `;
-          
+
           // Ajustes de CSS para garantir que a imagem cubra a tela e não repita
           body.style.backgroundSize = 'cover';       // Preenche todo o espaço
           body.style.backgroundAttachment = 'fixed'; // Imagem fixa ao rolar a página
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      3. ALTERNÂNCIA DE MODO CLARO / ESCURO (THEME SWITCHER)
      ========================================================================== */
-  
+
   const themeToggle = document.getElementById('theme-toggle');
 
   /**
@@ -81,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function setLightMode() {
     const root = document.documentElement.style;
-    
+
     // Definição da Paleta Clara (Light Mode)
     // Fundo da página (off-white / gelo)
     root.setProperty('--shape-body', '#F8FAFC');
@@ -89,12 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
     root.setProperty('--shape-button', '#E2E8F0');
     // Cor de estado hover (cinza claro)
     root.setProperty('--shape-hover', '#CBD5E1');
-    
+
     // Inputs
     root.setProperty('--input-base', '#FFFFFF');       // Fundo branco puro
     root.setProperty('--input-stroke', '#94A3B8');     // Borda cinza médio
     root.setProperty('--input-placeholder', '#64748B');// Texto de ajuda
-    
+
     // Tipografia
     root.setProperty('--color-heading', '#0F172A');    // Títulos (quase preto)
     root.setProperty('--color-body', '#334155');       // Texto corrido (cinza escuro)
@@ -107,16 +109,16 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function setDarkMode() {
     const root = document.documentElement.style;
-    
+
     // Lista de variáveis que precisam ser resetadas
     const properties = [
-      '--shape-body', 
-      '--shape-button', 
+      '--shape-body',
+      '--shape-button',
       '--shape-hover',
-      '--input-base', 
-      '--input-stroke', 
+      '--input-base',
+      '--input-stroke',
       '--input-placeholder',
-      '--color-heading', 
+      '--color-heading',
       '--color-body'
     ];
 
@@ -126,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Listener para o Toggle Switch
   if (themeToggle) {
-    themeToggle.addEventListener('change', function() {
+    themeToggle.addEventListener('change', function () {
       // Se checked = true, ativa modo claro. Caso contrário, reseta para escuro.
       if (this.checked) {
         setLightMode();
